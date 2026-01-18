@@ -6,6 +6,7 @@
 # Prompt: "Act as a Senior Agribusiness Lawyer. Create a logic challenge based on Art. 12 of the Brazilian Forest Code (Lei 12.651/2012)."
 # Author: Miguel José Neves de Resende
 # ---------------------------------------------------------
+print("\n=== CALCULADORA DE RESERVA LEGAL (LEI 12.651/2012) ===\n")
 tamanho = float(input('Insira o tamanho da propriedade em hectares (ha): '))
 print('')
 reserva = float(input('Insira quantos hectares (ha) são preservados atualmente: '))
@@ -41,7 +42,7 @@ print('São Paulo (SP)')
 print('Sergipe (SE)')
 print('Tocantins (TO)')
 print('')
-uf = input('Insira a sigla: ')
+uf = input('Insira a sigla: ').upper().strip()
 if uf in ['AC', 'AP', 'AM', 'MT', 'PA', 'RO', 'RR', 'TO', 'MA']:
     # Dentro da Amazônia Legal
     print('')
@@ -61,6 +62,7 @@ if uf in ['AC', 'AP', 'AM', 'MT', 'PA', 'RO', 'RR', 'TO', 'MA']:
     else:
         print('')
         print('[ERRO] VALOR INVÁLIDO')
+        exit()
 else:
     # Fora da Amazônia Legal
     print('')
@@ -68,10 +70,10 @@ else:
     preservacao_necessaria = 0.2
 if preservacao_necessaria > reserva_porcentagem :
     print('')
-    print(f'A propriedade em questão preserva MENOS do que a legislação (Lei 12.651/2012) exige. Um total de {(preservacao_necessaria - reserva_porcentagem)*100: .2f}% de insuficiência.')
+    print(f'A propriedade em questão preserva MENOS do que a legislação (Lei 12.651/2012) exige. Um total de {(preservacao_necessaria - reserva_porcentagem)*100: .2f}% de insuficiência. Seria necessário plantar {(preservacao_necessaria * tamanho) - reserva} hectares.')
 elif preservacao_necessaria < reserva_porcentagem :
     print('')
-    print(f'A propriedade em questão preserva MAIS do que a legislação (Lei 12.651/2012) exige. Um total de {(reserva_porcentagem - preservacao_necessaria)*100: .2f}% de excedente.')
+    print(f'A propriedade em questão preserva MAIS do que a legislação (Lei 12.651/2012) exige. Um total de {(reserva_porcentagem - preservacao_necessaria)*100: .2f}% de excedente. Isso equivale à um excedente de {((preservacao_necessaria * tamanho) - reserva)*-1} hectares.')
 else:
     print('')
     print('A propriedade em questão preserva EXATAMENTE o que a legislação (Lei 12.651/2012) exige.')
