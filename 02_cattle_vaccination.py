@@ -24,3 +24,10 @@ while idade != 0 :
     else:
         print('[ERRO] VALOR INVÁLIDO')
         exit()
+
+if count_novilho > 0:
+    partes_da_frase.append(f"{count_novilho} novilhos")
+if count_boi > 0:
+    partes_da_frase.append(f"{count_boi} bois")
+if count_bezerro > 0:
+    partes_da_frase.append(f"{count_bezerro} bezerros")
